@@ -25,6 +25,8 @@ model User {
   Role   Role? @relation(fields: [roleId], references: [id])
   roleId Int?
 
+  transactions Transaction[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -38,4 +40,36 @@ model Role {
   user User[]
 
   @@map("roles")
+}
+
+model Transaction {
+  id Int @id @default(autoincrement())
+
+  amount      Float
+  description String?
+  date        DateTime @default(now())
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("transactions")
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+
+  icon String
+  name String
+
+  transactions Transaction[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("categories")
 }

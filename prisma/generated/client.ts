@@ -47,3 +47,13 @@ export type User = Prisma.UserModel
  * 
  */
 export type Role = Prisma.RoleModel
+/**
+ * Model Transaction
+ * 
+ */
+export type Transaction = Prisma.TransactionModel
+/**
+ * Model Category
+ * 
+ */
+export type Category = Prisma.CategoryModel
