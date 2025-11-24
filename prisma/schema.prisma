@@ -42,12 +42,18 @@ model Role {
   @@map("roles")
 }
 
+enum TransactionType {
+  income
+  expense
+}
+
 model Transaction {
   id Int @id @default(autoincrement())
 
+  type        TransactionType
   amount      Float
   description String?
-  date        DateTime @default(now())
+  date        DateTime        @default(now())
 
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
