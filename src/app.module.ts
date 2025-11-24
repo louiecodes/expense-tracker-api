@@ -6,6 +6,7 @@ import { UserController } from './user/user.controller';
 import { APP_GUARD } from '@nestjs/core';
 import { AccessTokenGuard, RolesGuard } from './commons/guards';
 import { MailModule } from './mail/mail.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { MailModule } from './mail/mail.module';
     AuthModule,
     PrismaModule,
     MailModule,
+    CategoryModule,
   ],
   controllers: [UserController],
   providers: [
