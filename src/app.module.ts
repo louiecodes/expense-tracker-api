@@ -7,6 +7,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { AccessTokenGuard, RolesGuard } from './commons/guards';
 import { MailModule } from './mail/mail.module';
 import { CategoryModule } from './category/category.module';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CategoryModule } from './category/category.module';
     PrismaModule,
     MailModule,
     CategoryModule,
+    TransactionModule,
   ],
   controllers: [UserController],
   providers: [
