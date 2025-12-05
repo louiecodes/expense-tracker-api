@@ -26,8 +26,8 @@ export class TransactionController {
   }
 
   @Get()
-  findAll() {
-    return this.transactionService.findAll();
+  findAll(@GetCurrentUserId() userId: number) {
+    return this.transactionService.findAll(userId);
   }
 
   @Get(':id')

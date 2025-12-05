@@ -33,9 +33,15 @@ export class TransactionService {
     }
   }
 
-  async findAll() {
+  async findAll(userId: number) {
     try {
-      return await this.prisma.transaction.findMany();
+      return await this.prisma.transaction.findMany({
+        where: { userId },
+        include: {
+          category: true,
+        },
+        orderBy: { createdAt: 'desc' },
+      });
     } catch (error) {
       console.log('Error retrieving transactions: ', error);
       throw new BadRequestException(error.message);
